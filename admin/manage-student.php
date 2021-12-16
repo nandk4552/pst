@@ -28,9 +28,9 @@ if (isset($_SESSION['update'])) {
 <div class="container mt-5 py-5">
     <h1 class="text-center">Manage Students</h1>
     <div id="main-content" class="py-3 shadow-lg ">
-        <div id="wrapper">
+        <div id="wrapper" class="p-3 m-3">
 
-            <!-- add category section starts -->
+            <!-- add driver section starts -->
             <a href="<?php echo SITEURL; ?>admin/add-student.php" class="btn btn-primary btn-sm my-3">Add Student</a>
 
             <table class="tbl-full my-3 table" id="myTable">
@@ -38,12 +38,12 @@ if (isset($_SESSION['update'])) {
                     <tr>
                         <th scope="col">Sno</th>
                         <th scope="col">Student Name</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Class</th>
                         <th scope="col">Parent Name</th>
                         <th scope="col">Parent Mobile Number</th>
-                        <th scope="col">Price</th>
-                        <!-- <th scope="col">Image</th> -->
-                        <th scope="col">Featured</th>
-                        <th scope="col">Active</th>
+                        <th scope="col">school</th>
+                        <th scope="col">address</th>
                         <th scope="col">Actions</th>
                     </tr>
 
@@ -51,8 +51,8 @@ if (isset($_SESSION['update'])) {
 
                 <?php
                 // create sql query to get all the food
-                $sql = "SELECT * FROM tbl_food";
-
+                $sql = "SELECT * FROM tbl_student";
+                // INSERT INTO `tbl_student` (`id`, `full_name`, `dob`, `class`, `parent_name`, `parent_number`, `school_name`, `address`) VALUES ('1', 'sujeeth', '2015-12-08', '', 'd uncle', '01234567897', 'ma school ', 'ma illu');
                 // Execute the query
                 $result = mysqli_query($conn, $sql);
 
@@ -67,38 +67,24 @@ if (isset($_SESSION['update'])) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         // get the values from Individual columns
                         $id = $row['id'];
-                        $title = $row['title'];
-                        $price = $row['price'];
-                        $image_name = $row['image_name'];
-                        $featured = $row['featured'];
-                        $active = $row['active'];
+                        $full_name = $row['full_name'];
+                        $dob = $row['dob'];
+                        $class = $row['class'];
+                        $parent_name = $row['parent_name'];
+                        $parent_number = $row['parent_number'];
+                        $school_name = $row['school_name'];
+                        $address = $row['address'];
                 ?>
                         <tbody>
                             <tr>
                                 <td scope="row"><?php echo $sno++; ?>.</td>
-                                <td><?php echo $title; ?></td>
+                                <td><?php echo $full_name; ?></td>
+                                <td><?php echo $dob; ?></td>
+                                <td><?php echo $class; ?></td>
                                 <td><?php echo $parent_name; ?></td>
                                 <td><?php echo $parent_number; ?></td>
-                                <td>$ <?php echo $price; ?></td>
-                                <!-- <td>
-                                    <?php
-                                    // Check whether the we have image or not
-                                    if ($image_name == "") {
-                                        // We donot have image Display Error Message
-                                        echo "<div class='text-danger'>Image Not Added</div>";
-                                    } else {
-                                        // we have Image,Display Image
-                                    ?>
-                                    <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="Image can't Preview right now..." width="100px">
-
-                                    <?php
-
-                                    }
-
-                                    ?>
-                                </td> -->
-                                <td><?php echo $featured; ?></td>
-                                <td><?php echo $active; ?></td>
+                                <td><?php echo $school_name; ?></td>
+                                <td><?php echo $address; ?></td>
                                 <td>
                                     <a href="<?php echo SITEURL; ?>admin/update-student.php?id=<?php echo $id; ?>" class="btn btn-success btn-sm">Update student</a>
                                     <a href="<?php echo SITEURL; ?>admin/delete-student.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger btn-sm">Delete student</a>
@@ -113,7 +99,7 @@ if (isset($_SESSION['update'])) {
                 } else {
                     // Food not Added in Database
                     echo "<tr>
-                            <td colspan='7' class='text-danger'>Food not Added Yet.</td>
+                            <td colspan='7' class='text-danger'>student not Added Yet.</td>
                           </tr>";
                 }
 

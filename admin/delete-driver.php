@@ -13,7 +13,7 @@
         // Remove the Physical image file is available
         if($image_name!="") {
             // Image is Available
-            $path = "../images/category/".$image_name; 
+            $path = "../images/driver/".$image_name; 
 
             // Remove the Image 
             $remove = unlink($path);
@@ -27,7 +27,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>';
                 // Redirect to manage category page
-                header("Location: ".SITEURL."admin/manage-category.php");
+                header("Location: ".SITEURL."admin/manage-driver.php");
                 // stop the process
                 die();
             }
@@ -46,27 +46,27 @@
             // set success message and redirect 
             session_start();
             $_SESSION['delete'] = '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>Success!</strong> Category Deleted Successfully.
+                                        <strong>Success!</strong> Driver Deleted Successfully.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>';
 
-            header("Location: ".SITEURL."admin/manage-category.php");
+            header("Location: ".SITEURL."admin/manage-driver.php");
         }
         else {
             // set fail message and redirect the user
             session_start();
             $_SESSION['delete'] = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>warning!</strong> Failed to Delete Category.
+                                        <strong>warning!</strong> Failed to Delete driver.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>';
 
-            header("Location: ".SITEURL."admin/manage-category.php");
+            header("Location:".SITEURL."admin/manage-driver.php");
             
         }
 
     }
     else {
         // redirect to manage category page
-        header("Location: ".SITEURL."admin/manage-category.php");
+        header("Location:".SITEURL."admin/manage-driver.php");
         exit;
     }

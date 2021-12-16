@@ -47,7 +47,7 @@ session_start();
                         <a class="nav-link" href="manage-admin.php">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="manage-category.php">Drivers</a>
+                        <a class="nav-link" href="manage-driver.php">Drivers</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="manage-student.php">Students</a>

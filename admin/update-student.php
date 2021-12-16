@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // sql query to get the selected food 
-    $sql2 = "SELECT * FROM tbl_food WHERE id=$id";
+    $sql2 = "SELECT * FROM tbl_student WHERE id=$id";
 
     // Execute the query 
     $result2 = mysqli_query($conn, $sql2);
@@ -18,17 +18,18 @@ if (isset($_GET['id'])) {
     // get the value based on query executed 
     $row2 = mysqli_fetch_assoc($result2);
 
-    // get the individual values of selected food 
-    $title = $row2['title'];
-    $description = $row2['description'];
+    // get the individual values of selected student 
+    $full_name = $row2['full_name'];
+    $dob = $row2['dob'];
     $price = $row2['price'];
-    $current_image = $row2['image_name'];
-    $current_category = $row2['category_id'];
-    $featured = $row2['featured'];
-    $active = $row2['active'];
+    $class = $row2['class'];
+    $parent_name = $row2['parent_name'];
+    $parent_number = $row2['parent_number'];
+    $school_name = $row2['school_name'];
+    $address = $row2['address'];
 } else {
-    // Redirect to Manage Food
-    header('location:' . SITEURL . 'admin/manage-food.php');
+    // Redirect to Manage student
+    header('location:' . SITEURL . 'admin/manage-student.php');
     die();
 }
 ?>
@@ -38,38 +39,36 @@ if (isset($_GET['id'])) {
     <div id="main-content" class="zindex-2" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,0.3);">
 
         <div id="wrapper">
-            <h1 class="text-center py-3">Update Food</h1>
+            <h1 class="text-center py-3">Update student</h1>
 
             <form action="" class="was-validated" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title </label>
-                    <input type="text" value="<?php echo $title; ?>" class="form-control" value="" name="title" id="title" aria-describedby="emailHelp">
+                    <label for="title" class="form-label">Student Name </label>
+                    <input type="text" value="<?php echo $full_name; ?>" class="form-control" value="" name="title" id="title" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea placeholder="Description of the food" class="form-control" name="description" id="description"><?php echo $description; ?></textarea>
+                    <label for="dob" class="form-label">DOB</label>
+                    <input type="date" value="<?php echo $dob; ?>" class="form-control" name="dob" id="dob">
                 </div>
-
                 <div class="mb-3">
-                    <label for="price" class="form-label">Price</label>
-                    <input value="<?php echo $price; ?>" type="number" class="form-control" name="price" id="price">
+                    <label for="class" class="form-label">class</label>
+                    <input type="text" value="<?php echo $class; ?>" class="form-control" name="class" id="class">
                 </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <label class="form-label mb-0">Current Image: </label>
-                    <div class="ms-5">
-                        <?php
-                        if ($current_image == "") {
-                            // image not available
-                            echo '<div class="text-danger">Image not Available</div>';
-                        } else {
-                            // image available
-                        ?>
-                            <img src="<?php echo SITEURL; ?>images/food/<?php echo $current_image; ?>" width="150px">
-                        <?php
-                        }
-
-                        ?>
-                    </div>
+                <div class="mb-3">
+                    <label for="parent_name" class="form-label">Parent Name</label>
+                    <input type="text" value="<?php echo $parent_name; ?>" class="form-control" name="parent_name" id="parent_name">
+                </div>
+                <div class="mb-3">
+                    <label for="parent_number" class="form-label">Parent Mobile Number</label>
+                    <input type="text" value="<?php echo $parent_number; ?>" class="form-control" name="parent_number" id="parent_number">
+                </div>
+                <div class="mb-3">
+                    <label for="school_name" class="form-label">School name</label>
+                    <input type="text" value="<?php echo $school_name; ?>" class="form-control" name="school_name" id="school_name">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input value="<?php echo $address; ?>" type="text" class="form-control" name="address" id="address">
                 </div>
 
                 <div class="mb-3">
@@ -109,7 +108,7 @@ if (isset($_GET['id'])) {
                         } else {
                             //  categories not available
                             ?>
-                            <option value="0">Category Not Available</option>
+                            <option value="0">driver Not Available</option>
 
                         <?php
                         }

@@ -23,12 +23,20 @@ if (isset($_SESSION['upload'])) {
     <div id="main-content">
 
         <div id="wrapper">
-            <h1 class="text-center py-3">Add Category</h1>
+            <h1 class="text-center hl1 py-3">Add Driver</h1>
 
             <form action="" class="was-validated" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title </label>
+                    <label for="title" class="form-label">Driver Name </label>
                     <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="license" class="form-label">Driverving license no </label>
+                    <input type="text" class="form-control" name="license" id="license" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="aadhar" class="form-label">Aadhar Card No </label>
+                    <input type="number" class="form-control" name="aadhar" id="aadhar" aria-describedby="emailHelp">
                 </div>
 
 
@@ -36,7 +44,6 @@ if (isset($_SESSION['upload'])) {
                 <div class="mb-2 d-flex align-items-center">
                     <label for="exampleInputEmail1" class="form-label">Featured: </label>
                     <div class="form-check">
-
                         <input class="form-check-input mx-1" name="featured" type="radio" value="Yes" id="featured">
                         <label class="form-check-label" for="featured">
                             Yes
@@ -70,13 +77,13 @@ if (isset($_SESSION['upload'])) {
 
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Select Image </label>
+                    <label for="image" class="form-label">Select Driver Profile Picture </label>
                     <input type="file" class="form-control" name="image" id="image" aria-label="file example">
                     <div class="invalid-feedback">Invalid Field</div>
                 </div>
 
                 <div class="mb-3">
-                    <button class="btn btn-primary" type="submit" name="submit">Add Category</button>
+                    <button class="btn btn-primary" type="submit" name="submit">Add Driver</button>
                 </div>
             </form>
         </div>
@@ -88,10 +95,13 @@ if (isset($_SESSION['upload'])) {
 <?php
 //Check whether the button is clicked or not
 if (isset($_POST['submit'])) {
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // echo " Clicked";
 
     // 1.Get the data from Category Form
     $title = $_POST['title'];
+    $license = $_POST['license'];
+    $aadhar = $_POST['aadhar'];
 
     // For featured radio input , we need to check whether the button is selected or not
     if (isset($_POST['featured'])) {
@@ -129,11 +139,11 @@ if (isset($_POST['submit'])) {
             $ext = end(explode('.', $image_name));
 
             // Rename the image
-            $image_name = "Food_Category_" . rand(0000, 9999) . '.' . $ext;
-
+            $image_name = "driver_" . rand(1000000000000000, 10000000000000000) . '.' . $ext;
+            // $image_name = "driver_" . rand(0000, 9999) . '.' . $ext;
 
             $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = "../images/category/" . $image_name;
+            $destination_path = "../images/driver/" . $image_name;
 
             // Finally upload the image
             $upload = move_uploaded_file($source_path, $destination_path);
@@ -149,9 +159,15 @@ if (isset($_POST['submit'])) {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     ';
-                // Redirect the user to add category page
-                header("Location: " . SITEURL . "admin/add-category.php");
-                exit;
+                // Redirect the user to add driver page
+                // header("Location:".SITEURL."admin/add-driver.php");
+                // exit;
+?>
+                <!-- redirecting the user to add driver page -->
+                <script type="text/javascript">
+                    window.location = "<?php echo SITEURL; ?>admin/add-driver.php";
+                </script>
+        <?php
             }
         }
     } else {
@@ -160,7 +176,8 @@ if (isset($_POST['submit'])) {
     }
 
     // 2.Create a SQL query to insert Category into Database
-    $sql = "INSERT INTO `tbl_category` (`title`, `image_name`, `featured`, `active`) VALUES ('$title', '$image_name', '$featured', '$active')";
+    // $sql = "INSERT INTO `tbl_category` (`title`, `image_name`, `featured`, `active`) VALUES ('$title', '$image_name', '$featured', '$active')";
+    $sql = "INSERT INTO `tbl_category` (`id`, `title`, `image_name`, `license`, `aadhar`, `featured`, `active`) VALUES (NULL, '$title', '$image_name', '$license', '$aadhar', '$featured', '$active')";
 
 
     // 3. Execute the Query and Save the data into database
@@ -169,32 +186,38 @@ if (isset($_POST['submit'])) {
     // 4. Check whether the query executed or not and data added or not
 
     if ($result == true) {
-        //query executed and Category added   
+        //query executed and driver added   
         session_start();
         $_SESSION['add-category'] = '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> Category Added Successfully.
+                <strong>Success!</strong> Driver Added Successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             ';
 
-        // redirect the user to manage category page
-        // header("Location: " . SITEURL . "admin/manage-category.php");
-        header("location: " . SITEURL .  'admin/manage-category.php');
-        exit;
+        // redirect the user to manage driver page
+
+        ?>
+        <script type="text/javascript">
+            window.location = "<?php echo SITEURL; ?>admin/manage-driver.php";
+        </script>
+    <?php
     } else {
-        // Failed to add Category
+        // Failed to add driver
         session_start();
         $_SESSION['add-category'] = '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error!</strong> Failed to Add Category.
+                <strong>Error!</strong> Failed to Add driver.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             ';
 
-        // redirect the user to add category page
-        header("Location: " . SITEURL . "admin/add-category.php");
-        exit;
+        // redirect the user to add driver page
+    ?>
+        <script type="text/javascript">
+            window.location = "<?php echo SITEURL; ?>admin/add-driver.php";
+        </script>
+<?php
     }
 }
 

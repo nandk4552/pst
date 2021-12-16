@@ -10,7 +10,7 @@ include('partials/_header.php');
     <div id="main-content">
 
         <div id="wrapper">
-            <h1 class="text-center py-3">Update Category</h1>
+            <h1 class="text-center py-3">Update Driver</h1>
 
 
             <?php
@@ -41,17 +41,17 @@ include('partials/_header.php');
                     // Redirect the user with Session message
                     $_SESSION['no-category-found'] = '
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error!</strong> category Not Found.
+                        <strong>Error!</strong> Driver Not Found.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     ';
 
-                    header("Location: " . SITEURL . "admin/manage-category.php");
+                    header("Location:".SITEURL."admin/manage-driver.php");
                     die();
                 }
             } else {
                 // redirect to manage category page
-                header("Location: " . SITEURL . "admin/manage-category.php");
+                header("Location:".SITEURL."admin/manage-driver.php");
                 die();
             }
 
@@ -115,7 +115,7 @@ include('partials/_header.php');
                         if ($current_image != "") {
                             // Display the image
                         ?>
-                            <img src="<?php echo SITEURL; ?>images/category/<?php echo $current_image; ?>" alt="image Can't Preview right now" width="100px">
+                            <img src="<?php echo SITEURL; ?>images/driver/<?php echo $current_image; ?>" alt="image Can't Preview right now" width="100px">
                         <?php
                         } else {
                             // Display the message
@@ -172,11 +172,11 @@ if (isset($_POST['submit'])) {
             $ext = end(explode('.', $image_name));
 
             // Rename the image
-            $image_name = "Food-Category-" . rand(0000, 9999) . '.' . $ext;
+            $image_name = "driver-" . rand(0000, 9999) . '.' . $ext;
 
 
             $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = "../images/category/" . $image_name;
+            $destination_path = "../images/driver/" . $image_name;
 
             // Finally upload the image
             $upload = move_uploaded_file($source_path, $destination_path);
@@ -191,8 +191,8 @@ if (isset($_POST['submit'])) {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     ';
-                // Redirect the user to manage category page
-                header("Location: " . SITEURL . "admin/manage-category.php");
+                // Redirect the user to manage driver page
+                header("Location:".SITEURL."admin/manage-driver.php");
                 exit;
             }
 
@@ -200,7 +200,7 @@ if (isset($_POST['submit'])) {
             if ($current_image != "") {
 
 
-                $remove_path = "../images/category/" . $current_image;
+                $remove_path = "../images/driver/" . $current_image;
                 $remove = unlink($remove_path);
 
                 // Check whether the image is removed or not
@@ -212,7 +212,7 @@ if (isset($_POST['submit'])) {
                         <strong>Error!</strong> Failed to remove the current Image.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>   ';
-                    header("location: " . SITEURL .  "admin/manage-category.php");
+                    header("location: " . SITEURL .  "admin/manage-driver.php");
                     die();
                 }
             }
@@ -244,18 +244,31 @@ if (isset($_POST['submit'])) {
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         ';
-        header("Location: " . SITEURL . "admin/manage-category.php");
-        exit;
+
+        // header("Location: " . SITEURL . "admin/manage-driver.php");
+        // exit;
+        ?>
+        <!-- Redirecting the user to manage driver page -->
+        <script type="text/javascript">
+			window.location = "<?php echo SITEURL; ?>admin/manage-driver.php";
+		</script>
+        <?php
     } else {
         // Failed to Update Category
         $_SESSION['update-category'] = '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error!</strong> Failed to Update Category.
+            <strong>Error!</strong> Failed to Update driver.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         ';
-        header("Location: " . SITEURL . "admin/manage-category.php");
-        exit;
+        // header("Location: " . SITEURL . "admin/manage-driver.php");
+        // exit;
+        ?>
+         <!-- Redirecting the user to manage driver page -->
+         <script type="text/javascript">
+			window.location = "<?php echo SITEURL; ?>admin/manage-driver.php";
+		</script>
+        <?php
     }
 }
 ?>

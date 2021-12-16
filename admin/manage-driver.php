@@ -60,7 +60,7 @@ if (isset($_SESSION['failed-remove'])) {
             <div class="col-lg-12">
                 <div>
                     <!-- add category section starts -->
-                    <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn btn-primary btn-sm">Add Driver</a>
+                    <a href="<?php echo SITEURL; ?>admin/add-driver.php" class="btn btn-primary btn-sm">Add Driver</a>
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
@@ -96,6 +96,8 @@ if (isset($_SESSION['failed-remove'])) {
                                 $id = $row['id'];
                                 $title = $row['title'];
                                 $image_name = $row['image_name'];
+                                $license = $row['license'];
+                                $aadhar = $row['aadhar'];
                                 $featured = $row['featured'];
                                 $active = $row['active'];
                                 $sno++;
@@ -112,7 +114,7 @@ if (isset($_SESSION['failed-remove'])) {
                                             // Display the image
                                         ?>
 
-                                            <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name ?>" alt="" width="100px">
+                                            <img src="<?php echo SITEURL; ?>images/driver/<?php echo $image_name ?>" alt="" width="100px">
 
                                         <?php
                                         } else {
@@ -127,13 +129,13 @@ if (isset($_SESSION['failed-remove'])) {
                                     </td>
 
                                         
-                                    <td><?php echo $driving_license ?></td>
-                                    <td><?php echo $adhar ?></td>
+                                    <td><?php echo $license ?></td>
+                                    <td><?php echo $aadhar ?></td>
                                     <td><?php echo $featured ?></td>
                                     <td><?php echo $active ?></td>
                                     <td>
-                                        <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id; ?>" class="btn btn-success btn-sm">Update Driver</a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger btn-sm">Delete Driver</a>
+                                        <a href="<?php echo SITEURL; ?>admin/update-driver.php?id=<?php echo $id; ?>" class="btn btn-success btn-sm">Update Driver</a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete-driver.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger btn-sm">Delete Driver</a>
                                     </td>
                                 </tr>
                             <?php

@@ -1,10 +1,14 @@
 <?php include "partials/_header.php"?>
 <div class="conatainer shadow-md m-5">
     <form>
-        <h1 class="display-6 text-center">Student Registration</h1>
+        <h1 class="display-6 text-center">Student Registration Form</h1>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Full Name*</label>
             <input type="text" class="form-control" placeholder="Enter student name .." required id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Date Of Birth*</label>
+            <input type="date" class="form-control"  required id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Class*</label>
@@ -24,22 +28,22 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Parent Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter parent name here" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Parent Mobile Number*</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Eg: 989949XXXX" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Parent Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <label for="exampleInputEmail1" class="form-label">School Name*</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="enter school name" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Address</label>
-            <textarea type="text" class="form-control" id="exampleInputPassword1"> </textarea>
+            <textarea type="text" class="form-control" placeholder="enter your current address" id="exampleInputPassword1"> </textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Register</button>
     </form>
 
 
