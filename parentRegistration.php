@@ -24,6 +24,9 @@
                 <option value="8">8th class</option>
                 <option value="9">9th class</option>
                 <option value="10">10th class</option>
+                <option value="10">Intermidiate 1st year</option>
+                <option value="10">Intermidiate 2nd year</option>
+
             </select>
         </div>
         <div class="mb-3">
@@ -39,8 +42,12 @@
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="enter school name" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Address</label>
-            <textarea type="text" class="form-control" placeholder="enter your current address" id="exampleInputPassword1"> </textarea>
+            <label for="exampleInputEmail1" class="form-label">Address (pickup)*</label>
+            <textarea type="text" class="form-control" id="exampleInputEmail1" placeholder="enter pickup address..." aria-describedby="emailHelp" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Address (Drop)*</label>
+            <textarea type="text" class="form-control" placeholder="enter drop address..." id="exampleInputPassword1"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Register</button>
