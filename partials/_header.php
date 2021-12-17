@@ -35,7 +35,13 @@
                         <a class="nav-link " aria-current="page" href="<?php echo SITEURL; ?>map.php">Tracker</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="<?php echo SITEURL; ?>DriverLocation.php">Location</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?php echo SITEURL; ?>about.php">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="<?php echo SITEURL; ?>contact.php">Support</a>
                     </li>
                 </ul>
                 <div class="col-md-3 text-end">
